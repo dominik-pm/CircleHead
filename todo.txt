@@ -1,0 +1,3 @@
+-gameplay (working, levels, enemies, ...)
+-quality (shader, lighning, ...)
+-sounds (shooting sound, ...)

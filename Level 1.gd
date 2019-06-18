@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemy
+var enemys
 var enemyspawner1
 var enemyspawner2
 
@@ -20,20 +20,23 @@ func _ready():
 	timer.start()
 	add_child(timer)
 	
-	enemy = preload("res://Enemy.tscn")
+	enemys = [
+		preload("res://Enemy.tscn")
+	]
 	
 	enemyspawner1 = get_node("Enemy_Spawner1")
 	enemyspawner2 = get_node("Enemy_Spawner2")
 
-#func _process(delta):
-#	pass
 
 func spawn_enemy():
+	var e
+	e = enemys[0]
+	
 	var r = floor(rand_range(0, 2))
 	if r == 0:
-		enemyspawner1.spawn_enemy(1)
+		enemyspawner1.spawn_enemy(e)
 	else:
-		enemyspawner2.spawn_enemy(2)
+		enemyspawner2.spawn_enemy(e)
 		
 func game_over():
 	print("game over")

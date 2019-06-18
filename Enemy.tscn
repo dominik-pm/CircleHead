@@ -9,11 +9,12 @@ radius = 20.0
 [node name="Enemy" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 15
-mass = 10.0
+mass = 8.0
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )
+torque = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

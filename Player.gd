@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export var health = 100
+export var armor = 0
 export var shooting_speed = 0.2
 export var movement_speed = 200
 export var turn_speed = 0.03
@@ -12,9 +14,12 @@ var timer = null
 var can_shoot = true
 
 var bullet
+var health_bar
 
 func _ready():
 	bullet = preload("res://Bullet.tscn")
+	health_bar = get_parent().get_node("Player_Health_Bar")
+	health_bar.init(health)
 	
 	# Timer
 	timer = Timer.new()
@@ -78,3 +83,12 @@ func shoot():
 		var b = bullet.instance()
 		b.init(this_pos, dir)
 		get_parent().add_child(b)
+		
+func get_hit(dmg):
+	print("player: got hit!")
+	
+	health -= dmg
+	if health <= 0:
+		get_parent().game_over()
+		
+	health_bar.lose_health(dmg)

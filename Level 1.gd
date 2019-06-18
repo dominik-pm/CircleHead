@@ -21,7 +21,8 @@ func _ready():
 	add_child(timer)
 	
 	enemys = [
-		preload("res://Enemy.tscn")
+		preload("res://Enemy.tscn"),
+		preload("res://Enemy_Red_Shooter.tscn")
 	]
 	
 	enemyspawner1 = get_node("Enemy_Spawner1")
@@ -30,7 +31,7 @@ func _ready():
 
 func spawn_enemy():
 	var e
-	e = enemys[0]
+	e = enemys[1]
 	
 	var r = floor(rand_range(0, 2))
 	if r == 0:

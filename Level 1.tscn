@@ -14,7 +14,7 @@ script = ExtResource( 1 )
 position = Vector2( 780.601, 440.3 )
 
 [node name="Player_Health_Bar" parent="." instance=ExtResource( 3 )]
-position = Vector2( 49.8716, 7.16781 )
+position = Vector2( 14.2905, 12.2263 )
 z_index = 10
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
@@ -29,40 +29,39 @@ position = Vector2( 516.226, 205.462 )
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="Wall" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 300, -50 )
+position = Vector2( 300, 0 )
 rotation = 3.14159
 scale = Vector2( 2, 1 )
 
 [node name="Wall5" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1300, -50 )
+position = Vector2( 1300, 0 )
 rotation = 3.14159
 scale = Vector2( 2, 1 )
 
 [node name="Wall3" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( -50, 450 )
+position = Vector2( 0, 450 )
 rotation = 1.5708
 scale = Vector2( 3, 1 )
 
 [node name="Wall4" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1650, 450 )
+position = Vector2( 1600, 450 )
 rotation = -1.5708
 scale = Vector2( 3, 1 )
 
 [node name="Wall2" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 300, 950 )
+position = Vector2( 300, 900 )
 scale = Vector2( 2, 1 )
 
 [node name="Wall6" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1300, 950 )
+position = Vector2( 1300, 900 )
 scale = Vector2( 2, 1 )
 
 [node name="Wall7" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 800, -250 )
+position = Vector2( 800, -200 )
 rotation = 3.14159
 
 [node name="Wall8" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 800, 1150 )
-rotation = 3.14159
+position = Vector2( 800, 1100 )
 
 [node name="Enemy_Spawner1" parent="." instance=ExtResource( 6 )]
 position = Vector2( 800, -50 )

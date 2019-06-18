@@ -6,7 +6,7 @@ var enemyspawner2
 
 # Timer
 var timer
-var spawn_interval = 3
+export var spawn_interval = 3.5
 
 func on_timeout_complete():
 	spawn_enemy()
@@ -30,10 +30,20 @@ func _ready():
 
 
 func spawn_enemy():
-	var e
-	e = enemys[1]
+	var r = 0
+	var e = null
+	var cnt = 0
 	
-	var r = floor(rand_range(0, 2))
+	for enemy in enemys:
+		var probability = enemy.instance().spawn_probability
+		r = floor(rand_range(0, 11-probability))
+		if r == 0:
+			e = enemy
+	
+	if e == null:
+		e = enemys[0]
+	
+	r = floor(rand_range(0, 2))
 	if r == 0:
 		enemyspawner1.spawn_enemy(e)
 	else:

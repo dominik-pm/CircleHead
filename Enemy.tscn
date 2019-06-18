@@ -3,17 +3,17 @@
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemy1.png" type="Texture" id=2]
 
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.2
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 20.0
 
 [node name="Enemy" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 15
 mass = 8.0
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
@@ -21,7 +21,7 @@ script = ExtResource( 1 )
 torque = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="enemy1" type="Sprite" parent="."]
 scale = Vector2( 0.04, 0.04 )

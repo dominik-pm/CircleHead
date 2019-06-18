@@ -22,6 +22,7 @@ shield = 50
 damage = 10
 hitting_speed = 1.0
 is_shooter = true
+spawn_probability = 3
 dampening = 8
 speed = 6
 torque = 0

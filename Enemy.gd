@@ -5,6 +5,7 @@ export var shield = 0
 export var damage = 1
 export var hitting_speed = 0.2
 export var is_shooter = false
+export var spawn_probability = 10
 
 export var dampening = 6
 export var speed = 12
@@ -25,6 +26,9 @@ func _ready():
 	
 	player = get_parent().get_node("Player")
 	bullet = preload("res://Bullet_Enemy.tscn")
+	
+	if spawn_probability > 10:
+		spawn_probability = 10
 	
 	# Timer
 	timer = Timer.new()
@@ -86,9 +90,9 @@ func on_timeout_complete():
 
 func hit_player(p):
 	p.get_hit(damage)
-	
+
 func shoot():
 	print("enemy: shooting!")
 	var b = bullet.instance()
-	b.init(self.position, dir)
+	b.init(self.position, dir, damage)
 	get_parent().add_child(b)

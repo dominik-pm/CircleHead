@@ -7,6 +7,7 @@ var shield = max_shield
 export var shield_reg = 1.25
 export var shield_reg_interval = 1
 export var armor = 0
+export var damage = 50
 export var shooting_speed = 0.4
 export var movement_speed = 200
 export var turn_speed = 0.03
@@ -86,7 +87,17 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	look_at(this_pos+dir.rotated(PI/2)) # to rotate the player into the direction
-	move_and_slide(velocity*movement_speed)
+	#move_and_slide(velocity*movement_speed)
+	
+	var collision = move_and_collide(delta*velocity*movement_speed)
+	##
+	if collision != null:
+		var body = collision.collider
+		if body.is_in_group('bullet'):
+			print('enemy: bullet hit me!')
+			get_hit(body.damage)
+	##
+	
 	#move_and_slide(velocity*dir*movement_speed) # into the direction
 	#self.position += velocity*dir*delta*movement_speed
 	velocity = Vector2(0, 0)
@@ -103,7 +114,7 @@ func shoot():
 		
 		# add a bullet to the game the bullet
 		var b = bullet.instance()
-		b.init(this_pos, dir)
+		b.init(this_pos, dir, damage)
 		get_parent().add_child(b)
 
 # Regenerate shield
@@ -114,7 +125,7 @@ func shieldreg_on_timeout_complete():
 		
 	health_bar.change_health(health, shield)
 	
-	reg_timer.start()
+	reg_timer.start()	
 
 # function to get hit by enemy
 func get_hit(dmg):

@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var health = 100
 export var armor = 0
-export var shooting_speed = 0.2
+export var shooting_speed = 0.4
 export var movement_speed = 200
 export var turn_speed = 0.03
 var velocity = Vector2(0, 0)

@@ -31,9 +31,9 @@ func _ready():
 func spawn_enemy():
 	var r = floor(rand_range(0, 2))
 	if r == 0:
-		enemyspawner1.spawn_enemy()
+		enemyspawner1.spawn_enemy(1)
 	else:
-		enemyspawner2.spawn_enemy()
+		enemyspawner2.spawn_enemy(2)
 		
 func game_over():
 	print("game over")

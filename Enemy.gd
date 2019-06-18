@@ -2,10 +2,14 @@ extends RigidBody2D
 
 export var health = 100
 export var armor = 0
-export var thrust = Vector2(0, 250)
-export var torque = 1000
 export var damage = 1
 export var hitting_speed = 0.2
+export var can_shoot = false
+
+export var dampening = 6
+export var speed = 12
+var thrust = Vector2(0, 250*speed)
+export var torque = 1000
 
 var can_hit = true
 var player
@@ -16,13 +20,15 @@ var vel
 var timer = null
 
 func _ready():
+	set_linear_damp(dampening)
+	
+	player = get_parent().get_node("Player")
+	
 	# Timer
 	timer = Timer.new()
 	timer.wait_time = hitting_speed
 	timer.connect("timeout", self, "on_timeout_complete")
 	add_child(timer)
-	
-	player = get_parent().get_node("Player")
 	
 func _process(delta):
 	var bodys = get_colliding_bodies()

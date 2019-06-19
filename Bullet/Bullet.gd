@@ -18,11 +18,6 @@ func _process(delta):
 	# move into the direction with the given speed
 	self.position.x += speed * delta * dir.x
 	self.position.y += speed * delta * dir.y
-	
-	# if the bullet is not in the viewport
-	if not get_node("VisibilityNotifier2D").is_on_screen():
-		queue_free()
-		#pass
 
 # if the bullet collides with something
 func _on_Bullet_body_entered(body):

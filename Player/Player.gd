@@ -113,7 +113,7 @@ func _physics_process(delta):
 
 # function to get hit by enemy
 func get_hit(dmg):
-	print("player: got hit!")
+	#print("player: got hit!")
 	
 	if shield >= dmg:
 		shield -= dmg

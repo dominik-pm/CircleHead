@@ -6,7 +6,6 @@ func _ready():
 	bullet = preload("res://Bullet/Bullet_Fireball.tscn")
 	._ready()
 	
-
 func _process(delta):
 	pass
 
@@ -17,7 +16,7 @@ func on_timeout_complete():
 
 # add this function
 func shoot():
-	print("enemy: shooting!")
+	#print("enemy: shooting!")
 	var b = bullet.instance()
 	var pos = $Gun/Muzzle.global_position
 	b.init(pos, dir, damage)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Enemys/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemys/Enemy_Red_Shooter.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemy2.png" type="Texture" id=2]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -9,7 +9,9 @@ bounce = 0.2
 [sub_resource type="CircleShape2D" id=2]
 radius = 20.0
 
-[node name="Enemy" type="RigidBody2D"]
+[node name="Enemy_Red_Shooter" type="RigidBody2D" groups=[
+"enemy",
+]]
 collision_layer = 4
 collision_mask = 15
 mass = 8.0
@@ -19,13 +21,10 @@ contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )
 shield = 50
-damage = 10
+damage = 20
 hitting_speed = 1.0
-is_shooter = true
 spawn_probability = 3
-dampening = 8
-speed = 6
-torque = 0
+speed = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.25, 1.25 )
@@ -40,4 +39,3 @@ texture = ExtResource( 2 )
 [node name="Muzzle" type="Position2D" parent="Gun"]
 position = Vector2( 0, -20 )
 
-[connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]

@@ -4,7 +4,6 @@ export var health = 100
 export var shield = 0
 export var damage = 1
 export var hitting_speed = 0.2
-export var is_shooter = false
 export var spawn_probability = 10
 
 export var dampening = 6
@@ -14,7 +13,6 @@ export var torque = 1000
 
 var can_hit = true
 var player
-var bullet
 var dir
 var vel
 
@@ -25,7 +23,6 @@ func _ready():
 	set_linear_damp(dampening)
 	
 	player = get_parent().get_node("Player")
-	bullet = preload("res://Bullet/Bullet_Enemy.tscn")
 	
 	if spawn_probability > 10:
 		spawn_probability = 10
@@ -38,15 +35,14 @@ func _ready():
 	timer.start()
 	
 func _process(delta):
-	# if this enemy doesn't shoot, hit colliding player
-	if !is_shooter:
-		var bodys = get_colliding_bodies()
-		for body in bodys:
-			if body.is_in_group('player'):
-				if can_hit: 
-					can_hit = false
-					hit_player(body)
-					timer.start()
+	# hit colliding player
+	var bodys = get_colliding_bodies()
+	for body in bodys:
+		if body.is_in_group('player'):
+			if can_hit: 
+				can_hit = false
+				hit_player(body)
+				timer.start()
 
 func _integrate_forces(state):
 	dir = player.position-self.position
@@ -76,24 +72,13 @@ func get_hit(dmg):
 func die():
 	queue_free()
 
-func _on_Enemy_body_entered(body):
-	if body.is_in_group('bullet'):
-		print('enemy: bullet hit me!')
-		get_hit(body.damage)
+#func _on_Enemy_body_entered(body):
+	#if body.is_in_group('bullet'):
+		#print('enemy: bullet hit me!')
+		#get_hit(body.damage)
 
 func on_timeout_complete():
-	if is_shooter:
-		shoot()
-		timer.start()
-	else:
-		can_hit = true
+	can_hit = true
 
 func hit_player(p):
 	p.get_hit(damage)
-
-func shoot():
-	print("enemy: shooting!")
-	var b = bullet.instance()
-	var pos = $Gun/Muzzle.global_position
-	b.init(pos, dir, damage)
-	get_parent().add_child(b)

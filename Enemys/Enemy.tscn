@@ -9,7 +9,9 @@ bounce = 0.2
 [sub_resource type="CircleShape2D" id=2]
 radius = 20.0
 
-[node name="Enemy" type="RigidBody2D"]
+[node name="Enemy" type="RigidBody2D" groups=[
+"enemy",
+]]
 collision_layer = 4
 collision_mask = 47
 mass = 8.0
@@ -27,4 +29,3 @@ shape = SubResource( 2 )
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 2 )
 
-[connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]

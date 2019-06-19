@@ -21,9 +21,11 @@ func _process(delta):
 	
 	# if the bullet is not in the viewport
 	if not get_node("VisibilityNotifier2D").is_on_screen():
-		#queue_free()
-		pass
+		queue_free()
+		#pass
 
 # if the bullet collides with something
 func _on_Bullet_body_entered(body):
+	if body.is_in_group('enemy') or body.is_in_group('player'):
+		body.get_hit(damage)
 	queue_free()

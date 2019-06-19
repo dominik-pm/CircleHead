@@ -34,8 +34,10 @@ func spawn_enemy():
 	var e = null
 	var cnt = 0
 	
+	
 	for enemy in enemys:
 		var probability = enemy.instance().spawn_probability
+		randomize()
 		r = floor(rand_range(0, 11-probability))
 		if r == 0:
 			e = enemy
@@ -43,6 +45,7 @@ func spawn_enemy():
 	if e == null:
 		e = enemys[0]
 	
+	randomize()
 	r = floor(rand_range(0, 2))
 	if r == 0:
 		enemyspawner1.spawn_enemy(e)

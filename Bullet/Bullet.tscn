@@ -23,6 +23,7 @@ mode = 3
 gravity_scale = 3.2
 contacts_reported = 1
 contact_monitor = true
+can_sleep = false
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

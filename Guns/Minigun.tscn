@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Guns/Minigun.gd" type="Script" id=1]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.00645161, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[node name="Minigun" type="Node2D"]
+script = ExtResource( 1 )
+damage = 40
+shooting_speed = 0.15
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2( 15, 20 )
+mesh = SubResource( 1 )
+texture = SubResource( 3 )
+
+[node name="Muzzle" type="Position2D" parent="."]
+position = Vector2( 0, -20 )
+

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Guns/Pistol.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleMesh" id=1]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[node name="Pistol" type="Node2D"]
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 1 )
+shooting_speed = 0.5
+
+[node name="Muzzle" type="Position2D" parent="."]
+position = Vector2( 0, -20 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2( 10, 20 )
+mesh = SubResource( 1 )
+texture = SubResource( 3 )
+

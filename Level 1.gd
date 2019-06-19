@@ -21,8 +21,8 @@ func _ready():
 	add_child(timer)
 	
 	enemys = [
-		preload("res://Enemy.tscn"),
-		preload("res://Enemy_Red_Shooter.tscn")
+		preload("res://Enemys/Enemy.tscn"),
+		preload("res://Enemys/Enemy_Red_Shooter.tscn")
 	]
 	
 	enemyspawner1 = get_node("Enemy_Spawner1")

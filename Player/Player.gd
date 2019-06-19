@@ -26,7 +26,7 @@ var bullet
 var health_bar
 
 func _ready():
-	bullet = preload("res://Bullet.tscn")
+	bullet = preload("res://Bullet/Bullet.tscn")
 	health_bar = get_parent().get_node("Player_Health_Bar")
 	health_bar.init(max_health, max_shield)
 	
@@ -114,7 +114,8 @@ func shoot():
 		
 		# add a bullet to the game the bullet
 		var b = bullet.instance()
-		b.init(this_pos, dir, damage)
+		var pos = $Gun/Muzzle.global_position
+		b.init(pos, dir, damage)
 		get_parent().add_child(b)
 
 # Regenerate shield

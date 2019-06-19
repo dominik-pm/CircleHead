@@ -25,7 +25,7 @@ func _ready():
 	set_linear_damp(dampening)
 	
 	player = get_parent().get_node("Player")
-	bullet = preload("res://Bullet_Enemy.tscn")
+	bullet = preload("res://Bullet/Bullet_Enemy.tscn")
 	
 	if spawn_probability > 10:
 		spawn_probability = 10
@@ -94,5 +94,6 @@ func hit_player(p):
 func shoot():
 	print("enemy: shooting!")
 	var b = bullet.instance()
-	b.init(self.position, dir, damage)
+	var pos = $Gun/Muzzle.global_position
+	b.init(pos, dir, damage)
 	get_parent().add_child(b)

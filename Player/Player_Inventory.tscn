@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Player_Inventory.gd" type="Script" id=1]
+[ext_resource path="res://Player/inventory.png" type="Texture" id=2]
+[ext_resource path="res://Player/Inventory_Slot.tscn" type="PackedScene" id=3]
+
+[node name="Player_Inventory" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="inventory" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="Inventory_Slot" parent="inventory" instance=ExtResource( 3 )]
+position = Vector2( -337.726, -18.9127 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Inventory_Slot2" parent="inventory" instance=ExtResource( 3 )]
+position = Vector2( -77.8228, -13.5353 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Inventory_Slot3" parent="inventory" instance=ExtResource( 3 )]
+position = Vector2( 203.589, -15.3278 )
+scale = Vector2( 0.25, 0.25 )
+

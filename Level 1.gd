@@ -1,8 +1,13 @@
 extends Node2D
 
+export(Array, PackedScene) var guns
+export(Array, Image) var gun_sprites
+
 var enemys
 var enemyspawner1
 var enemyspawner2
+
+var item
 
 # Timer
 var timer
@@ -27,6 +32,9 @@ func _ready():
 	
 	enemyspawner1 = get_node("Enemy_Spawner1")
 	enemyspawner2 = get_node("Enemy_Spawner2")
+	
+	item = preload("res://Environment/Item.tscn")
+	spawn_item()
 
 
 func spawn_enemy():
@@ -51,6 +59,12 @@ func spawn_enemy():
 		enemyspawner1.spawn_enemy(e)
 	else:
 		enemyspawner2.spawn_enemy(e)
-		
+
+func spawn_item():
+	# get a random position
+	# instance() the item
+	# add item as child
+	pass
+
 func game_over():
 	print("game over")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-be2216fcaabb5c62aa2466cd9a5726a8.stex"
+path="res://.import/minigun.png-d476d44799f13b6e6c134a355f54430b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player.png"
-dest_files=[ "res://.import/player.png-be2216fcaabb5c62aa2466cd9a5726a8.stex" ]
+source_file="res://Guns/Sprites/minigun.png"
+dest_files=[ "res://.import/minigun.png-d476d44799f13b6e6c134a355f54430b.stex" ]
 
 [params]
 

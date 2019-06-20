@@ -15,6 +15,7 @@ var velocity = Vector2(0, 0)
 var dir = Vector2(0, -1)
 var this_pos
 
+var all_guns
 var current_gun = null
 var current_gun_index = 0
 
@@ -23,9 +24,14 @@ var timer_reg = null
 
 var health_bar
 
+var inventory
+
 func _ready():
 	health_bar = get_parent().get_node("Player_Health_Bar")
 	health_bar.init(max_health, max_shield)
+	
+	inventory = get_parent().get_node("Player_Inventory")
+	inventory.init()
 	
 	# Shield Regeneration Timer
 	timer_reg = Timer.new()
@@ -34,7 +40,8 @@ func _ready():
 	add_child(timer_reg)
 	timer_reg.start()
 	
-	current_gun_index = 0
+	all_guns = get_parent().guns
+	pickup_newgun(0) # give the player the first gun
 	change_gun(0)
 
 #func _process(delta):
@@ -95,7 +102,7 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	current_gun.check_input(dir)
-	look_at(this_pos+dir.rotated(PI/2)) # to rotate the player into the direction
+	look_at(this_pos+dir.rotated(0)) # to rotate the player into the direction, .rotated(PI/2) to look with the players head
 	move_and_slide(velocity*movement_speed)
 	
 	## all in bullet now, delete if you are feeling like that :)
@@ -130,7 +137,34 @@ func get_hit(dmg):
 	
 	if health <= 0:
 		get_parent().game_over()
+
+# to heal by heal item for example
+func heal(amt):
+	if health <= max_health-amt:
+		health += amt
+	elif health > max_health-amt:
+		var a = amt - (max_health - health)
+		health = max_health
 		
+		if a > max_shield:
+			shield = max_shield
+		else:
+			shield += a
+	
+
+# function called by items
+func on_item_got_item():
+	var i = $Guns.get_child_count()
+	pickup_newgun(i)
+
+func pickup_newgun(i):
+	if i < all_guns.size():
+		$Guns.add_child(all_guns[i].instance())
+		inventory.add_gun(i)
+		change_gun(1)
+	else:
+		heal(50)
+
 func change_gun(i):
 	# i is -1 or 1 (lower index or greater index)
 	
@@ -156,3 +190,6 @@ func change_gun(i):
 	
 	# display current gun
 	current_gun.visible = true
+	
+	# display gun change in inventory
+	inventory.select_slot(current_gun_index)

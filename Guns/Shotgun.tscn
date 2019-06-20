@@ -1,16 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Guns/Shotgun.gd" type="Script" id=1]
-
-[sub_resource type="CubeMesh" id=1]
-size = Vector3( 10, 25, 2 )
-
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.0774194, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[ext_resource path="res://Guns/Sprites/shotgun.png" type="Texture" id=2]
 
 [node name="Shotgun" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,8 +9,10 @@ damage = 75
 shooting_speed = 0.8
 
 [node name="Muzzle" type="Position2D" parent="."]
+position = Vector2( 22.4705, -2.90567 )
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-mesh = SubResource( 1 )
-texture = SubResource( 3 )
+[node name="shotgun" type="Sprite" parent="."]
+position = Vector2( 0.143269, 0.0497937 )
+scale = Vector2( 0.053703, 0.053703 )
+texture = ExtResource( 2 )
 

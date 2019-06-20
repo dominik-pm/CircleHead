@@ -63,9 +63,9 @@ func shieldreg_on_timeout_complete():
 func get_input():
 	# -- WEAPON SWITCH -->
 	if Input.is_action_just_pressed("player_next_weapon"):
-		change_gun(1)
+		next_gun()
 	if Input.is_action_just_pressed("player_prev_weapon"):
-		change_gun(-1)
+		prev_gun()
 	# <-- WEAPON SWITCH --
 	
 	# -- VELOCITY --
@@ -161,28 +161,33 @@ func pickup_newgun(i):
 	if i < all_guns.size():
 		$Guns.add_child(all_guns[i].instance())
 		inventory.add_gun(i)
-		change_gun(1)
+		change_gun(i)
 	else:
 		heal(50)
 
+func next_gun():
+	# calculate index of the next gun
+	var new_index = current_gun_index + 1
+	# if already at the last gun and player switches to higher index set index to first	
+	if new_index >= all_guns.size():
+		new_index = 0
+	change_gun(new_index)
+
+func prev_gun():
+	# calculate index of the previous gun
+	var new_index = current_gun_index - 1
+	# if already at the last gun and player switches to higher index set index to first	
+	if new_index < 0:
+		new_index = all_guns.size()-1
+	change_gun(new_index)
+
 func change_gun(i):
-	# i is -1 or 1 (lower index or greater index)
-	
 	# get all guns from inventory
 	var all_guns = get_node("Guns").get_children()
 	
-	# calculate index of the new gun
-	var new_index = current_gun_index + i
-	# if already at the last gun and player switches to higher index set index to first
-	if new_index >= all_guns.size():
-		new_index = 0
-	# if already at the first gun and player switches to lower index set index to last
-	if new_index < 0:
-		new_index = all_guns.size()-1
-	
 	# set the current gun to the gun that should be changed to
-	current_gun = all_guns[new_index]
-	current_gun_index = new_index
+	current_gun = all_guns[i]
+	current_gun_index = i
 	
 	# hide all guns
 	for gun in all_guns:

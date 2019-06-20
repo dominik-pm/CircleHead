@@ -1,5 +1,6 @@
 extends Node
 
+export(AudioStreamSample) var sound_shoot
 var bullet
 export var damage = 50
 export var shooting_speed = 0.2
@@ -32,6 +33,7 @@ func check_shoot(dir):
 		can_shoot = false
 		timer_shoot.start()
 		
+		get_node("/root/SFX").play_sample(sound_shoot)
 		shoot_bullet(dir)
 
 func shoot_bullet(dir):

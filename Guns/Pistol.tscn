@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Guns/Pistol.gd" type="Script" id=1]
-[ext_resource path="res://Guns/Sprites/pistol.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/gun_shot.wav" type="AudioStream" id=2]
+[ext_resource path="res://Guns/Sprites/pistol.png" type="Texture" id=3]
 
 [node name="Pistol" type="Node2D"]
 scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 1 )
+sound_shoot = ExtResource( 2 )
 shooting_speed = 0.5
 
 [node name="Muzzle" type="Position2D" parent="."]
@@ -14,5 +16,5 @@ position = Vector2( 21.5909, -7.33611 )
 [node name="pistol" type="Sprite" parent="."]
 position = Vector2( -0.0432167, 0.267014 )
 scale = Vector2( 0.0784091, 0.0784091 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 

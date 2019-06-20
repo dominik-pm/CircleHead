@@ -22,4 +22,3 @@ shape = SubResource( 1 )
 
 [node name="Guns" type="Node2D" parent="."]
 position = Vector2( 30, 0 )
-

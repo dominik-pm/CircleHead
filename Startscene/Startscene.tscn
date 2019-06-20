@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Startscene/Button.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.203922, 0.596078, 0.858824, 0.815686 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.203922, 0.596078, 0.858824, 0.517647 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.203922, 0.596078, 0.858824, 1 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 470.355
+margin_top = 367.276
+margin_right = 1035.36
+margin_bottom = 511.276
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "Start"
+script = ExtResource( 1 )

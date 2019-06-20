@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="CircleHead"
-run/main_scene="res://Level 1.tscn"
+run/main_scene="res://Startscene/Startscene.tscn"
 boot_splash/image="res://Enemys/enemy1.png"
 boot_splash/bg_color=Color( 0.172549, 0.243137, 0.313726, 1 )
 config/icon="res://Player/player.png"

@@ -166,6 +166,7 @@ func pickup_newgun(i):
 		heal(50)
 
 func next_gun():
+	var all_guns = get_node("Guns").get_children()
 	# calculate index of the next gun
 	var new_index = current_gun_index + 1
 	# if already at the last gun and player switches to higher index set index to first	
@@ -174,6 +175,7 @@ func next_gun():
 	change_gun(new_index)
 
 func prev_gun():
+	var all_guns = get_node("Guns").get_children()
 	# calculate index of the previous gun
 	var new_index = current_gun_index - 1
 	# if already at the last gun and player switches to higher index set index to first	
@@ -183,14 +185,14 @@ func prev_gun():
 
 func change_gun(i):
 	# get all guns from inventory
-	var all_guns = get_node("Guns").get_children()
+	var guns_inventory = get_node("Guns").get_children()
 	
 	# set the current gun to the gun that should be changed to
-	current_gun = all_guns[i]
+	current_gun = guns_inventory[i]
 	current_gun_index = i
 	
 	# hide all guns
-	for gun in all_guns:
+	for gun in guns_inventory:
 		gun.visible = false
 	
 	# display current gun

@@ -23,3 +23,4 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "Start"
 script = ExtResource( 1 )
+

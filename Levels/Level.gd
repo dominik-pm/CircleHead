@@ -21,6 +21,9 @@ func on_timeout_complete():
 	timer.start()
 
 func _ready():
+	# play start sound
+	get_node("/root/SFX").play_from_bank("level_start")
+	
 	# Pup Ups
 	gameover_popup = get_node("PopUps/GameOverPopUp")
 	
@@ -76,6 +79,8 @@ func spawn_item(x, y):
 	get_node("Items").add_child(i)
 
 func game_over():
+	# play gameover sound
+	get_node("/root/SFX").play_from_bank("gameover")
 	# pause game
 	get_tree().paused = true
 	# show pop up (backtomenu, restartlevel)

@@ -22,7 +22,7 @@ var timer = null
 func _ready():
 	set_linear_damp(dampening)
 	
-	player = get_parent().get_node("Player")
+	player = get_parent().get_parent().get_node("Player")
 	
 	if spawn_probability > 10:
 		spawn_probability = 10

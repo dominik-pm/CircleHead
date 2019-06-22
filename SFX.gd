@@ -1,11 +1,11 @@
 extends Node2D
 
-var settings_sound_volume = -10
+var settings_sound_volume = -20
 
 export var max_voices = 10
 
 func play_sample(sample):
-	var player = AudioStreamPlayer2D.new()
+	var player = AudioStreamPlayer.new()
 	$playing_sounds.add_child(player)
 	player.stream = sample
 	player.volume_db = settings_sound_volume

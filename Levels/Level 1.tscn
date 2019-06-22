@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Levels/Level 1.gd" type="Script" id=1]
 [ext_resource path="res://Guns/Pistol.tscn" type="PackedScene" id=2]
@@ -7,116 +7,121 @@
 [ext_resource path="res://Guns/Sprites/pistol.png" type="Texture" id=5]
 [ext_resource path="res://Guns/Sprites/shotgun.png" type="Texture" id=6]
 [ext_resource path="res://Guns/Sprites/minigun.png" type="Texture" id=7]
-[ext_resource path="res://Enemys/Enemy.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Enemys/Enemy_Red_Shooter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Player/Player_Health_Bar.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Player/Player_Inventory.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Environment/Wall.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Enemys/Enemy_Spawner.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Environment/Item.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/Player_Health_Bar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/Player_Inventory.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemys/Wave.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemys/Enemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Enemys/Enemy_Red_Shooter.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Environment/Wall.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Enemys/Enemy_Spawner.tscn" type="PackedScene" id=15]
 [ext_resource path="res://PopUp/GameOver.tscn" type="PackedScene" id=16]
-[ext_resource path="res://PopUp/Pause.tscn" type="PackedScene" id=17]
+[ext_resource path="res://PopUp/LevelSuccess.tscn" type="PackedScene" id=17]
+[ext_resource path="res://PopUp/Pause.tscn" type="PackedScene" id=18]
+[ext_resource path="res://PopUp/MessageBox.tscn" type="PackedScene" id=19]
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource( 1 )
 guns = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
 gun_sprites = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
-enemys = [ ExtResource( 8 ), ExtResource( 9 ) ]
 
-[node name="Player" parent="." instance=ExtResource( 10 )]
+[node name="Player" parent="." instance=ExtResource( 8 )]
 position = Vector2( 780.601, 440.3 )
 
-[node name="Player_Health_Bar" parent="." instance=ExtResource( 11 )]
+[node name="Player_Health_Bar" parent="." instance=ExtResource( 9 )]
 position = Vector2( 14.2905, 12.2263 )
 z_index = 10
 
-[node name="Player_Inventory" parent="." instance=ExtResource( 12 )]
+[node name="Player_Inventory" parent="." instance=ExtResource( 10 )]
 position = Vector2( 120.322, 855.759 )
 rotation = -2.27374e-013
+
+[node name="Waves" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Wave1" parent="Waves" instance=ExtResource( 11 )]
+enemys = [ ExtResource( 12 ) ]
+enemy_counts = [ 5 ]
+spawn_interval = 3
+
+[node name="Wave2" parent="Waves" instance=ExtResource( 11 )]
+enemys = [ ExtResource( 12 ), ExtResource( 13 ) ]
+enemy_counts = [ 5, 1 ]
+spawn_interval = 2
+
+[node name="Wave3" parent="Waves" instance=ExtResource( 11 )]
+enemys = [ ExtResource( 12 ), ExtResource( 13 ) ]
+enemy_counts = [ 5, 2 ]
+
+[node name="Wave4" parent="Waves" instance=ExtResource( 11 )]
+enemys = [ ExtResource( 12 ), ExtResource( 13 ) ]
+enemy_counts = [ 10, 5 ]
 
 [node name="Walls" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="Wall" parent="Walls" instance=ExtResource( 13 )]
+[node name="Wall" parent="Walls" instance=ExtResource( 14 )]
 position = Vector2( 300, 0 )
 rotation = 3.14159
 scale = Vector2( 2, 1 )
 
-[node name="Wall5" parent="Walls" instance=ExtResource( 13 )]
+[node name="Wall5" parent="Walls" instance=ExtResource( 14 )]
 position = Vector2( 1300, 0 )
 rotation = 3.14159
 scale = Vector2( 2, 1 )
 
-[node name="Wall3" parent="Walls" instance=ExtResource( 13 )]
+[node name="Wall3" parent="Walls" instance=ExtResource( 14 )]
 position = Vector2( 0, 450 )
 rotation = 1.5708
 scale = Vector2( 3, 1 )
 
-[node name="Wall4" parent="Walls" instance=ExtResource( 13 )]
+[node name="Wall4" parent="Walls" instance=ExtResource( 14 )]
 position = Vector2( 1600, 450 )
 rotation = -1.5708
 scale = Vector2( 3, 1 )
 
-[node name="Wall2" parent="Walls" instance=ExtResource( 13 )]
+[node name="Wall2" parent="Walls" instance=ExtResource( 14 )]
 position = Vector2( 300, 900 )
 scale = Vector2( 2, 1 )
 
-[node name="Wall6" parent="Walls" instance=ExtResource( 13 )]
+[node name="Wall6" parent="Walls" instance=ExtResource( 14 )]
 position = Vector2( 1300, 900 )
 scale = Vector2( 2, 1 )
 
-[node name="Wall7" parent="Walls" instance=ExtResource( 13 )]
+[node name="Wall7" parent="Walls" instance=ExtResource( 14 )]
 position = Vector2( 800, -200 )
 rotation = 3.14159
 
-[node name="Wall8" parent="Walls" instance=ExtResource( 13 )]
+[node name="Wall8" parent="Walls" instance=ExtResource( 14 )]
 position = Vector2( 800, 1100 )
 
 [node name="Enemyspawners" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="Enemy_Spawner1" parent="Enemyspawners" instance=ExtResource( 14 )]
+[node name="Enemy_Spawner1" parent="Enemyspawners" instance=ExtResource( 15 )]
 position = Vector2( 800, -50 )
 
-[node name="Enemy_Spawner2" parent="Enemyspawners" instance=ExtResource( 14 )]
+[node name="Enemy_Spawner2" parent="Enemyspawners" instance=ExtResource( 15 )]
 position = Vector2( 800, 950 )
 
 [node name="Enemys" type="Node2D" parent="."]
-editor/display_folded = true
-
-[node name="Enemy" parent="Enemys" instance=ExtResource( 8 )]
-position = Vector2( 342.514, 313.219 )
-
-[node name="Enemy2" parent="Enemys" instance=ExtResource( 9 )]
-position = Vector2( 1233.96, 149.175 )
-
-[node name="Enemy3" parent="Enemys" instance=ExtResource( 8 )]
-position = Vector2( 374.891, 641.306 )
-
-[node name="Enemy4" parent="Enemys" instance=ExtResource( 8 )]
-position = Vector2( 731.039, 185.869 )
-
-[node name="Enemy5" parent="Enemys" instance=ExtResource( 8 )]
-position = Vector2( 787.159, 861.47 )
-
-[node name="Enemy6" parent="Enemys" instance=ExtResource( 9 )]
-position = Vector2( 1309.51, 673.683 )
 
 [node name="Items" type="Node2D" parent="."]
-editor/display_folded = true
-
-[node name="Item" parent="Items" instance=ExtResource( 15 )]
-position = Vector2( 559.799, 447.019 )
 
 [node name="PopUps" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="GameOverPopUp" parent="PopUps" instance=ExtResource( 16 )]
+[node name="GameOver" parent="PopUps" instance=ExtResource( 16 )]
 visible = false
 margin_right = 300.0
 rect_scale = Vector2( 3.08394, 3.08394 )
 
-[node name="PausePopUp" parent="PopUps" instance=ExtResource( 17 )]
+[node name="LevelSuccess" parent="PopUps" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Pause" parent="PopUps" instance=ExtResource( 18 )]
+visible = false
+
+[node name="MessageBox" parent="PopUps" instance=ExtResource( 19 )]
 visible = false
 

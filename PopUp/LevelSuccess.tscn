@@ -2,7 +2,7 @@
 
 [ext_resource path="res://PopUp/GameOver.gd" type="Script" id=1]
 
-[node name="GameOver" type="Control"]
+[node name="LevelSuccess" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,12 +13,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.376471 )
 
-[node name="Restart" type="Button" parent="."]
+[node name="next level" type="Button" parent="."]
 margin_left = 53.2553
 margin_top = 20.686
 margin_right = 142.255
 margin_bottom = 40.686
-text = "restart level"
+text = "next level"
 
 [node name="Menu" type="Button" parent="."]
 margin_left = 71.4642
@@ -27,5 +27,5 @@ margin_right = 120.464
 margin_bottom = 66.4496
 text = "menu"
 
-[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="next level" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]

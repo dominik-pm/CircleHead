@@ -9,7 +9,7 @@ func _ready():
 # <-- LEVEL CALLED FUNCTIONS <--
 
 # --> CONTROL CALLED FUNCTIONS: -->
-func next_level():
+func play_next_level():
 	# set current level to next level
 	current_level+=1
 	# load the level
@@ -23,6 +23,7 @@ func play_current_level():
 	if file.file_exists(level):
 		change_scene(level)
 	else:
+		# probably done with the last level
 		print(level + ", does not exist")
 # <-- CONTROL CALLED FUNCTIONS <--
 	

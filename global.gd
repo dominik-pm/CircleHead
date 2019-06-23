@@ -36,5 +36,11 @@ func play_current_level():
 func change_scene(scene_path):
 	get_tree().paused = false
 	print("changed scene to: " + str(scene_path))
+	# -- TEMPORARY FIX TO CLEAR BULLETS AFTER SCENE CHANGE -->
+	var nodes = get_node("/root").get_children()
+	for node in nodes:
+		if node.is_in_group('bullet'):
+			node.queue_free()
+	# <-- TEMPORARY FIX TO CLEAR BULLETS AFTER SCENE CHANGE --
 	get_tree().change_scene(scene_path)
 # <-- HELP FUNCTIONS <--

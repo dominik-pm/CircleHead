@@ -3,11 +3,10 @@ extends Node2D
 var gun_sprites
 var slots
 
-func _ready():
-	pass
-
 func init():
-	gun_sprites = get_parent().gun_sprites
+	#gun_sprites = get_parent().get_parent().gun_sprites
+	gun_sprites = get_parent().get_parent().get_parent().gun_sprites
+	#gun_sprites = get_parent().get_parent().get_parent().get_parent().gun_sprites
 	
 	slots = $inventory.get_children()
 

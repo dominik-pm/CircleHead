@@ -19,7 +19,7 @@
 [ext_resource path="res://PopUp/Pause.tscn" type="PackedScene" id=17]
 [ext_resource path="res://PopUp/MessageBox.tscn" type="PackedScene" id=18]
 
-[node name="Level 1" type="Node2D"]
+[node name="Level 2" type="Node2D"]
 script = ExtResource( 1 )
 guns = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
 gun_sprites = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]

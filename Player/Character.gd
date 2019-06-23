@@ -15,6 +15,8 @@ var velocity = Vector2(0, 0)
 var dir = Vector2(0, -1)
 var this_pos
 
+var level
+
 var all_guns
 var current_gun = null
 var current_gun_index = 0
@@ -29,13 +31,15 @@ var health_bar
 
 var inventory
 
-
 func _ready():
-	health_bar = get_parent().get_node("Player_Health_Bar")
+	health_bar = $"../HUD/Health_Bar"
 	health_bar.init(max_health, max_shield)
 	
-	inventory = get_parent().get_node("Player_Inventory")
+	inventory = $".."/HUD/Inventory
 	inventory.init()
+	
+	level = get_parent().get_parent()	
+	
 	
 	# Shield Regeneration Timer
 	timer_reg = Timer.new()
@@ -51,12 +55,9 @@ func _ready():
 	add_child(timer_unfreeze)
 	
 	# gun inventory
-	all_guns = get_parent().guns
+	all_guns = level.guns
 	pickup_newgun(0) # give the player the first gun
 	change_gun(0)
-
-#func _process(delta):
-	#pass
 
 # -- Timer called functions -->
 # Regenerate shield
@@ -153,7 +154,7 @@ func get_hit(dmg):
 	health_bar.change_health(health, shield)
 	
 	if health <= 0:
-		get_parent().game_over()
+		level.game_over()
 
 # to heal by heal item for example
 func heal(amt):

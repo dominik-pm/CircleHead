@@ -21,7 +21,7 @@ var timer_attack = null
 func _ready():
 	set_linear_damp(dampening)
 	
-	player = get_parent().get_parent().get_node("Player")
+	player = get_parent().get_parent().get_node("Player").get_node("Character")
 	
 	# Timer
 	timer_attack = Timer.new()

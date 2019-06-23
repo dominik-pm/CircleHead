@@ -25,7 +25,7 @@ contacts_reported = 1
 contact_monitor = true
 can_sleep = false
 script = ExtResource( 1 )
-speed = 200
+speed = 350
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 2, 2 )
@@ -35,5 +35,4 @@ shape = SubResource( 1 )
 scale = Vector2( 20, 20 )
 mesh = SubResource( 2 )
 texture = SubResource( 4 )
-
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

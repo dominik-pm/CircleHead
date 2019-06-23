@@ -26,6 +26,5 @@ margin_top = 46.4496
 margin_right = 120.464
 margin_bottom = 66.4496
 text = "menu"
-
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]

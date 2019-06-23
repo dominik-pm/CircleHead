@@ -9,6 +9,7 @@ z_index = 10
 script = ExtResource( 1 )
 
 [node name="inventory" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.658824 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
@@ -23,4 +24,3 @@ scale = Vector2( 0.25, 0.25 )
 [node name="Inventory_Slot3" parent="inventory" instance=ExtResource( 3 )]
 position = Vector2( 203.589, -15.3278 )
 scale = Vector2( 0.25, 0.25 )
-

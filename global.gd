@@ -5,6 +5,10 @@ var current_level = 1
 func _ready():
 	change_scene("Menu/Menu.tscn")
 
+func _input(event):
+	if event.is_action_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+
 # --> LEVEL CALLED FUNCTIONS: -->
 # <-- LEVEL CALLED FUNCTIONS <--
 

@@ -22,9 +22,13 @@ var current_gun_index = 0
 # Shield Regeneration Timer
 var timer_reg = null
 
+var timer_unfreeze
+var frozen = false
+
 var health_bar
 
 var inventory
+
 
 func _ready():
 	health_bar = get_parent().get_node("Player_Health_Bar")
@@ -40,6 +44,13 @@ func _ready():
 	add_child(timer_reg)
 	timer_reg.start()
 	
+	# unfreeze timer
+	timer_unfreeze = Timer.new()
+	timer_unfreeze.one_shot = true
+	timer_unfreeze.connect("timeout", self, "_on_unfreezetimer_timeout")
+	add_child(timer_unfreeze)
+	
+	# gun inventory
 	all_guns = get_parent().guns
 	pickup_newgun(0) # give the player the first gun
 	change_gun(0)
@@ -59,7 +70,7 @@ func shieldreg_on_timeout_complete():
 	timer_reg.start()	
 # <-- Timer called functions --
 
-# handle input (change direction and velocity)
+# handle input (shoot and change velocity)
 func get_input():
 	# -- WEAPON SWITCH -->
 	if Input.is_action_just_pressed("player_next_weapon"):
@@ -77,31 +88,37 @@ func get_input():
 		velocity.x = 1
 	if Input.is_action_pressed('ui_left'):
 		velocity.x = -1
-		
+	
 	# just moving forward and backwards
 	#if Input.is_action_pressed('ui_up'):
 		#velocity = 1
 	#if Input.is_action_pressed('ui_down'):
 		#velocity = -1
-		
-	# -- DIRECTION --
-	# rotate with keyboard
-	#if Input.is_action_pressed('ui_right'):
-		#dir = dir.rotated(turn_speed)
-	#if Input.is_action_pressed('ui_left'):
-		#dir = dir.rotated(-turn_speed)
-		
-	# -- DIRECTION --	
+	
+	# -- SHOOT -->
+	if Input.is_action_pressed("player_shoot"):
+		current_gun.check_shoot(dir)
+	
+func get_direction():
+	# -- DIRECTION -->
 	var mouse_pos = get_global_mouse_position() # get the mouse position as a 2Dvector
 	
 	# set the direction into the direction of the mouse
 	this_pos = self.position # vector at the players location
 	dir = mouse_pos-this_pos  # calculate a vector that is pointing from the player to the mouse
 	dir = dir.normalized() # make a unit vector
-
+	
+	# -- DIRECTION --
+	# rotate with keyboard
+	#if Input.is_action_pressed('ui_right'):
+		#dir = dir.rotated(turn_speed)
+	#if Input.is_action_pressed('ui_left'):
+		#dir = dir.rotated(-turn_speed)
+	
 func _physics_process(delta):
-	get_input()
-	current_gun.check_input(dir)
+	get_direction()
+	if not frozen:
+		get_input()
 	look_at(this_pos+dir.rotated(0)) # to rotate the player into the direction, .rotated(PI/2) to look with the players head
 	move_and_slide(velocity*movement_speed)
 	
@@ -200,3 +217,16 @@ func change_gun(i):
 	
 	# display gun change in inventory
 	inventory.select_slot(current_gun_index)
+
+# to freeze the player for a certain amount of time
+func freeze(freeze_time):
+	frozen = true
+	
+	#velocity.y = 0
+	#velocity.x = 0
+	
+	timer_unfreeze.start()
+
+func _on_unfreezetimer_timeout():
+	frozen = false
+	

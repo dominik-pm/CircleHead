@@ -23,5 +23,4 @@ custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "Text is changed in script... :)"
-
 [connection signal="pressed" from="StartLevel" to="." method="_on_StartLevel_pressed"]

@@ -22,11 +22,6 @@ func _ready():
 func shoot_on_timeout_complete():
 	can_shoot = true
 
-# clean up this argument 'dir' that has to be passed in every timer
-func check_input(dir):
-	if Input.is_action_pressed("player_shoot"):
-		check_shoot(dir)
-
 # function to shoot a bullet in the facing direction
 func check_shoot(dir):
 	if can_shoot:

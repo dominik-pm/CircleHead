@@ -1,18 +1,15 @@
 extends "res://Enemys/Enemy.gd"
 
-var bullet
+export(PackedScene) var bullet
 
-func _ready():
-	bullet = preload("res://Bullet/Bullet_Fireball.tscn")
-	._ready()
-	
+# override process 
 func _process(delta):
 	pass
 
 # override timout function to shoot instead of setting can_hit to true
 func on_timeout_complete():
 	shoot()
-	timer.start()
+	timer_attack.start()
 
 # override die function to spawn item when dead
 func die():

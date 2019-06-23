@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemys/Enemy_Shooter.gd" type="Script" id=1]
-[ext_resource path="res://Bullet/Bullet_Fireball.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemys/enemy2.png" type="Texture" id=3]
+[ext_resource path="res://Bullet/Bullet_Iceball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemys/enemy3.png" type="Texture" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.2
@@ -10,7 +10,7 @@ bounce = 0.2
 [sub_resource type="CircleShape2D" id=2]
 radius = 20.0
 
-[node name="Enemy_Red_Shooter" type="RigidBody2D" groups=[
+[node name="Enemy_Blue_Shooter" type="RigidBody2D" groups=[
 "enemy",
 ]]
 collision_layer = 4
@@ -21,18 +21,18 @@ gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )
-shield = 50
-damage = 20
-attacking_speed = 1.0
-speed = 8
+shield = 100
+damage = 50
+attacking_speed = 1.5
+speed = 4
 bullet = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1.25, 1.25 )
+scale = Vector2( 1.4, 1.4 )
 shape = SubResource( 2 )
 
-[node name="enemy1" type="Sprite" parent="."]
-scale = Vector2( 0.05, 0.05 )
+[node name="enemy3" type="Sprite" parent="."]
+scale = Vector2( 0.06, 0.06 )
 texture = ExtResource( 3 )
 
 [node name="Gun" type="Node2D" parent="."]

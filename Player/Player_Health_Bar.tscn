@@ -27,6 +27,7 @@ border_width_bottom = 2
 border_color = Color( 0.8, 0.8, 0.8, 0 )
 
 [node name="Player_Health_Bar" type="Node2D"]
+modulate = Color( 1, 1, 1, 0.8 )
 script = ExtResource( 1 )
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -64,4 +65,3 @@ margin_top = -15.5987
 margin_right = 89.3235
 margin_bottom = -1.59868
 text = "Player Shield:"
-

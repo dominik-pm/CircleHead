@@ -100,6 +100,10 @@ func get_input():
 	if Input.is_action_pressed("player_shoot"):
 		current_gun.check_shoot(dir)
 	
+# mobile input
+func on_mobile_move(dir):
+	velocity = dir
+	
 func get_direction():
 	# -- DIRECTION -->
 	var mouse_pos = get_global_mouse_position() # get the mouse position as a 2Dvector
@@ -123,6 +127,9 @@ func _physics_process(delta):
 	look_at(this_pos+dir.rotated(0)) # to rotate the player into the direction, .rotated(PI/2) to look with the players head
 	move_and_slide(velocity*movement_speed)
 	
+	# disabled for mobile
+	#velocity = Vector2(0, 0)	
+	
 	## all in bullet now, delete if you are feeling like that :)
 	#var collision = move_and_collide(delta*velocity*movement_speed)
 	#if collision != null:
@@ -134,7 +141,6 @@ func _physics_process(delta):
 	
 	#move_and_slide(velocity*dir*movement_speed) # into the direction
 	#self.position += velocity*dir*delta*movement_speed
-	velocity = Vector2(0, 0)
 
 # function to get hit by enemy
 func get_hit(dmg):

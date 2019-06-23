@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Levels/Level 1.gd" type="Script" id=1]
 [ext_resource path="res://Guns/Pistol.tscn" type="PackedScene" id=2]
@@ -11,13 +11,12 @@
 [ext_resource path="res://Enemys/Wave.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemys/Enemy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Enemys/Enemy_Red_Shooter.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Enemys/Enemy_Blue_Shooter.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Environment/tileset.tres" type="TileSet" id=13]
-[ext_resource path="res://Enemys/Enemy_Spawner.tscn" type="PackedScene" id=14]
-[ext_resource path="res://PopUp/GameOver.tscn" type="PackedScene" id=15]
-[ext_resource path="res://PopUp/LevelSuccess.tscn" type="PackedScene" id=16]
-[ext_resource path="res://PopUp/Pause.tscn" type="PackedScene" id=17]
-[ext_resource path="res://PopUp/MessageBox.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Environment/tileset.tres" type="TileSet" id=12]
+[ext_resource path="res://Enemys/Enemy_Spawner.tscn" type="PackedScene" id=13]
+[ext_resource path="res://PopUp/GameOver.tscn" type="PackedScene" id=14]
+[ext_resource path="res://PopUp/LevelSuccess.tscn" type="PackedScene" id=15]
+[ext_resource path="res://PopUp/Pause.tscn" type="PackedScene" id=16]
+[ext_resource path="res://PopUp/MessageBox.tscn" type="PackedScene" id=17]
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource( 1 )
@@ -27,11 +26,6 @@ gun_sprites = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 [node name="Player" parent="." instance=ExtResource( 8 )]
 
 [node name="Waves" type="Node2D" parent="."]
-
-[node name="TestWave" parent="Waves" instance=ExtResource( 9 )]
-enemys = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
-enemy_counts = [ 1, 2, 2 ]
-spawn_interval = 3
 
 [node name="Wave1" parent="Waves" instance=ExtResource( 9 )]
 enemys = [ ExtResource( 10 ) ]
@@ -56,7 +50,7 @@ enemy_counts = [ 10, 5 ]
 z_index = -1
 
 [node name="TileMap" type="TileMap" parent="Environment"]
-tile_set = ExtResource( 13 )
+tile_set = ExtResource( 12 )
 cell_size = Vector2( 32, 32 )
 collision_mask = 46
 format = 1
@@ -64,10 +58,10 @@ tile_data = PoolIntArray( -327660, 2, 2, -327659, 2, 131073, -327658, 2, 131073,
 
 [node name="Enemyspawners" type="Node2D" parent="."]
 
-[node name="Enemy_Spawner1" parent="Enemyspawners" instance=ExtResource( 14 )]
+[node name="Enemy_Spawner1" parent="Enemyspawners" instance=ExtResource( 13 )]
 position = Vector2( 784, -64 )
 
-[node name="Enemy_Spawner2" parent="Enemyspawners" instance=ExtResource( 14 )]
+[node name="Enemy_Spawner2" parent="Enemyspawners" instance=ExtResource( 13 )]
 position = Vector2( 784, 928 )
 
 [node name="Enemys" type="Node2D" parent="."]
@@ -77,16 +71,16 @@ position = Vector2( 784, 928 )
 [node name="PopUps" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="GameOver" parent="PopUps" instance=ExtResource( 15 )]
+[node name="GameOver" parent="PopUps" instance=ExtResource( 14 )]
 visible = false
 margin_right = 300.0
 rect_scale = Vector2( 3.08394, 3.08394 )
 
-[node name="LevelSuccess" parent="PopUps" instance=ExtResource( 16 )]
+[node name="LevelSuccess" parent="PopUps" instance=ExtResource( 15 )]
 visible = false
 
-[node name="Pause" parent="PopUps" instance=ExtResource( 17 )]
+[node name="Pause" parent="PopUps" instance=ExtResource( 16 )]
 visible = false
 
-[node name="MessageBox" parent="PopUps" instance=ExtResource( 18 )]
+[node name="MessageBox" parent="PopUps" instance=ExtResource( 17 )]
 visible = false

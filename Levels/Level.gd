@@ -68,7 +68,7 @@ func on_wave_complete(wave):
 	if get_node("Enemys").get_child_count() == 0:
 		next_wave()
 		wave.queue_free() # maybe better alternative
-		print("wave completed")
+		print(str(self.name)+": wave completed")
 # <-- FUNCTIONS CALLED BY THE CURRENT WAVE--
 
 func next_wave():
@@ -79,14 +79,14 @@ func next_wave():
 		level_success()
 	else:
 		# show wave completed info
-		messagebox_popup.show_msg("Wave " + str(i_current_wave) + " completed!")
+		messagebox_popup.show_msg(str(self.name)+": Wave " + str(i_current_wave) + " completed!")
 		timer_next_wave.start()
 
 func on_timeout_nextwave_complete():
 	# play new wave sound
 	get_node("/root/SFX").play_from_bank("new_wave")
 	# show new wave info
-	messagebox_popup.show_msg("Wave " + str(i_current_wave+1) + " aproaching!")
+	messagebox_popup.show_msg(str(self.name)+": Wave " + str(i_current_wave+1) + " aproaching!")
 	# start next wave
 	waves[i_current_wave].start_wave()
 

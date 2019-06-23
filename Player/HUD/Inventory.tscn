@@ -9,7 +9,6 @@ z_index = 10
 script = ExtResource( 1 )
 
 [node name="inventory" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.658824 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 

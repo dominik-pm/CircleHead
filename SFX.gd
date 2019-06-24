@@ -1,6 +1,6 @@
 extends Node2D
 
-var settings_sound_volume = -40
+var settings_sound_volume = -25
 
 export var max_voices = 10
 

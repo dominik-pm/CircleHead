@@ -27,4 +27,3 @@ shape = SubResource( 2 )
 [node name="enemy1" type="Sprite" parent="."]
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 2 )
-[connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]

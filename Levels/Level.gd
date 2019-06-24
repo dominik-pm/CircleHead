@@ -15,6 +15,7 @@ var i_current_wave = 0 # the index of the current wave
 var gameover_popup
 var levelsuccess_popup
 var messagebox_popup
+var settings_popup
 
 func _ready():
 	# play start sound
@@ -31,6 +32,7 @@ func _ready():
 	gameover_popup = get_node("PopUps/GameOver")
 	levelsuccess_popup = get_node("PopUps/LevelSuccess")
 	messagebox_popup = get_node("PopUps/MessageBox")
+	settings_popup = $PopUps/Settings
 	
 	# add all enemyspawners to the array
 	for spawner in get_node("Enemyspawners").get_children():
@@ -72,23 +74,22 @@ func on_wave_complete(wave):
 # <-- FUNCTIONS CALLED BY THE CURRENT WAVE--
 
 func next_wave():
+	# show wave completed info
+	messagebox_popup.show_msg(str(self.name)+": " + waves[i_current_wave].name + " completed!")
 	i_current_wave += 1 # set the current wave to the next wave
-	
+	timer_next_wave.start()
+
+func on_timeout_nextwave_complete():
 	# check if it was already the last wave
 	if i_current_wave >= waves.size():
 		level_success()
 	else:
-		# show wave completed info
-		messagebox_popup.show_msg(str(self.name)+": Wave " + str(i_current_wave) + " completed!")
-		timer_next_wave.start()
-
-func on_timeout_nextwave_complete():
-	# play new wave sound
-	get_node("/root/SFX").play_from_bank("new_wave")
-	# show new wave info
-	messagebox_popup.show_msg(str(self.name)+": Wave " + str(i_current_wave+1) + " aproaching!")
-	# start next wave
-	waves[i_current_wave].start_wave()
+		# play new wave sound
+		get_node("/root/SFX").play_from_bank("new_wave")
+		# show new wave info
+		messagebox_popup.show_msg(str(self.name)+": " + waves[i_current_wave].name + " aproaching!")
+		# start next wave
+		waves[i_current_wave].start_wave()
 
 func spawn_item(x, y):
 	# instance() the item
@@ -107,7 +108,9 @@ func game_over():
 	gameover_popup.show()
 	
 func level_success():
-	# pause game	
-	get_tree().paused = true	
+	# set next level
+	get_node("/root/global").level_set_next()
+	# pause game
+	get_tree().paused = true
 	# show pop up (backtomenu, nextlevel)	
-	levelsuccess_popup.show()	
+	levelsuccess_popup.show()

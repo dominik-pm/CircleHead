@@ -2,7 +2,7 @@ extends "res://Enemys/Enemy.gd"
 
 export(PackedScene) var bullet
 
-# override process 
+# override process
 func _process(delta):
 	pass
 

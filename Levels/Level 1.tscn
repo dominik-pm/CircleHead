@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Levels/Level 1.gd" type="Script" id=1]
 [ext_resource path="res://Guns/Pistol.tscn" type="PackedScene" id=2]
@@ -13,10 +13,11 @@
 [ext_resource path="res://Enemys/Enemy_Red_Shooter.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Environment/tileset.tres" type="TileSet" id=12]
 [ext_resource path="res://Enemys/Enemy_Spawner.tscn" type="PackedScene" id=13]
-[ext_resource path="res://PopUp/GameOver.tscn" type="PackedScene" id=14]
-[ext_resource path="res://PopUp/LevelSuccess.tscn" type="PackedScene" id=15]
-[ext_resource path="res://PopUp/Pause.tscn" type="PackedScene" id=16]
-[ext_resource path="res://PopUp/MessageBox.tscn" type="PackedScene" id=17]
+[ext_resource path="res://PopUp/MessageBox.tscn" type="PackedScene" id=14]
+[ext_resource path="res://PopUp/Settings.tscn" type="PackedScene" id=15]
+[ext_resource path="res://PopUp/GameOver.tscn" type="PackedScene" id=16]
+[ext_resource path="res://PopUp/LevelSuccess.tscn" type="PackedScene" id=17]
+[ext_resource path="res://PopUp/Pause.tscn" type="PackedScene" id=18]
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource( 1 )
@@ -27,22 +28,20 @@ gun_sprites = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 
 [node name="Waves" type="Node2D" parent="."]
 
-[node name="Wave1" parent="Waves" instance=ExtResource( 9 )]
+[node name="Wave 1" parent="Waves" instance=ExtResource( 9 )]
 enemys = [ ExtResource( 10 ) ]
 enemy_counts = [ 5 ]
-spawn_interval = 3
 
-[node name="Wave2" parent="Waves" instance=ExtResource( 9 )]
+[node name="Wave 2" parent="Waves" instance=ExtResource( 9 )]
 position = Vector2( 112, 0 )
 enemys = [ ExtResource( 10 ), ExtResource( 11 ) ]
 enemy_counts = [ 5, 1 ]
-spawn_interval = 2
 
-[node name="Wave3" parent="Waves" instance=ExtResource( 9 )]
+[node name="Wave 3" parent="Waves" instance=ExtResource( 9 )]
 enemys = [ ExtResource( 10 ), ExtResource( 11 ) ]
 enemy_counts = [ 5, 2 ]
 
-[node name="Wave4" parent="Waves" instance=ExtResource( 9 )]
+[node name="last Wave" parent="Waves" instance=ExtResource( 9 )]
 enemys = [ ExtResource( 10 ), ExtResource( 11 ) ]
 enemy_counts = [ 10, 5 ]
 
@@ -71,16 +70,18 @@ position = Vector2( 784, 928 )
 [node name="PopUps" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="GameOver" parent="PopUps" instance=ExtResource( 14 )]
+[node name="MessageBox" parent="PopUps" instance=ExtResource( 14 )]
 visible = false
-margin_right = 300.0
-rect_scale = Vector2( 3.08394, 3.08394 )
+show_behind_parent = true
 
-[node name="LevelSuccess" parent="PopUps" instance=ExtResource( 15 )]
-visible = false
-
-[node name="Pause" parent="PopUps" instance=ExtResource( 16 )]
+[node name="Settings" parent="PopUps" instance=ExtResource( 15 )]
 visible = false
 
-[node name="MessageBox" parent="PopUps" instance=ExtResource( 17 )]
+[node name="GameOver" parent="PopUps" instance=ExtResource( 16 )]
+visible = false
+
+[node name="LevelSuccess" parent="PopUps" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Pause" parent="PopUps" instance=ExtResource( 18 )]
 visible = false

@@ -14,7 +14,9 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.376471 )
 
 [node name="TextEdit" type="TextEdit" parent="."]
-margin_right = 200.0
-margin_bottom = 50.0
+margin_left = 302.104
+margin_top = 291.504
+margin_right = 502.104
+margin_bottom = 341.504
+rect_scale = Vector2( 4.56825, 4.56825 )
 text = "Game Paused"
-

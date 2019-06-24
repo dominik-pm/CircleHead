@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://PopUp/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://PopUp/LevelSuccess.gd" type="Script" id=1]
 
 [node name="LevelSuccess" type="Control"]
 pause_mode = 2
@@ -13,19 +13,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.376471 )
 
-[node name="next level" type="Button" parent="."]
-margin_left = 53.2553
-margin_top = 20.686
-margin_right = 142.255
-margin_bottom = 40.686
+[node name="Headline" type="Label" parent="."]
+margin_left = 206.49
+margin_top = 99.349
+margin_right = 403.49
+margin_bottom = 113.349
+rect_scale = Vector2( 6.15023, 6.15023 )
+text = "Level successfully done! (profi)"
+
+[node name="Nextlevel" type="Button" parent="."]
+margin_left = 577.763
+margin_top = 309.921
+margin_right = 666.763
+margin_bottom = 329.921
+rect_scale = Vector2( 4.88656, 4.88656 )
 text = "next level"
 
 [node name="Menu" type="Button" parent="."]
-margin_left = 71.4642
-margin_top = 46.4496
-margin_right = 120.464
-margin_bottom = 66.4496
+margin_left = 652.092
+margin_top = 499.728
+margin_right = 701.092
+margin_bottom = 519.728
+rect_scale = Vector2( 5.75344, 5.75344 )
 text = "menu"
-
-[connection signal="pressed" from="next level" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="Nextlevel" to="." method="_on_Nextlevel_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]

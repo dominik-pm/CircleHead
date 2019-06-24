@@ -2,7 +2,7 @@
 
 [ext_resource path="res://PopUp/GameOver.gd" type="Script" id=1]
 
-[node name="GameOver" type="Control"]
+[node name="Settings" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,19 +14,28 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.376471 )
 
 [node name="Restart" type="Button" parent="."]
-margin_left = 423.356
-margin_top = 265.31
-margin_right = 512.356
-margin_bottom = 285.31
-rect_scale = Vector2( 8.81309, 8.81309 )
+margin_left = 485.833
+margin_top = 54.0896
+margin_right = 574.833
+margin_bottom = 74.0896
+rect_scale = Vector2( 6.71001, 6.71001 )
 text = "restart level"
 
 [node name="Menu" type="Button" parent="."]
-margin_left = 592.193
-margin_top = 528.291
-margin_right = 641.193
-margin_bottom = 548.291
-rect_scale = Vector2( 8.66937, 8.66937 )
+margin_left = 640.997
+margin_top = 246.872
+margin_right = 689.997
+margin_bottom = 266.872
+rect_scale = Vector2( 5.65297, 5.65297 )
 text = "menu"
+
+[node name="Resume" type="Button" parent="."]
+margin_left = 572.58
+margin_top = 429.531
+margin_right = 633.58
+margin_bottom = 449.531
+rect_scale = Vector2( 6.94677, 6.94677 )
+text = "resume"
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="Resume" to="." method="_on_Resume_pressed"]

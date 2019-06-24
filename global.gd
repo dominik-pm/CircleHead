@@ -10,15 +10,17 @@ func _input(event):
 		OS.window_fullscreen = !OS.window_fullscreen
 
 # --> LEVEL CALLED FUNCTIONS: -->
+func level_set_next():
+	current_level+=1
 # <-- LEVEL CALLED FUNCTIONS <--
 
 # --> CONTROL CALLED FUNCTIONS: -->
-func play_next_level():
+#func play_next_level():
 	# set current level to next level
-	current_level+=1
+	#current_level+=1
 	# load the level
-	play_current_level()
-	pass
+	#play_current_level()
+	#pass
 	
 func play_current_level():
 	# load current level

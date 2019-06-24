@@ -25,22 +25,15 @@ pressed = ExtResource( 3 )
 visibility_mode = 1
 
 [node name="down" type="TouchScreenButton" parent="TouchControls"]
-position = Vector2( -32, 112 )
+position = Vector2( -32, 80 )
 rotation = -1.5708
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
 visibility_mode = 1
 
 [node name="up" type="TouchScreenButton" parent="TouchControls"]
-position = Vector2( 32, -112 )
+position = Vector2( 32, -80 )
 rotation = 1.5708
-normal = ExtResource( 2 )
-pressed = ExtResource( 3 )
-visibility_mode = 1
-
-[node name="stop" type="TouchScreenButton" parent="TouchControls"]
-position = Vector2( -32, 32 )
-rotation = 4.71239
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
 visibility_mode = 1
@@ -48,4 +41,3 @@ visibility_mode = 1
 [connection signal="pressed" from="TouchControls/right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="TouchControls/down" to="." method="_on_down_pressed"]
 [connection signal="pressed" from="TouchControls/up" to="." method="_on_up_pressed"]
-[connection signal="pressed" from="TouchControls/stop" to="." method="_on_stop_pressed"]

@@ -9,7 +9,7 @@ signal wave_complete
 var enemys_to_spawn = []
 
 var timer
-export var spawn_interval = 1
+export (float) var spawn_interval = 1
 
 func _ready():
 	# catch error (or find a better way of doing this)

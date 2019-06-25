@@ -66,6 +66,7 @@ position = Vector2( 784, 928 )
 [node name="Enemys" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
+position = Vector2( 769.376, 354.972 )
 
 [node name="PopUps" type="CanvasLayer" parent="."]
 layer = 100

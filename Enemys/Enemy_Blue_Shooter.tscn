@@ -22,8 +22,8 @@ contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )
 shield = 100
-damage = 50
-attacking_speed = 1.5
+damage = 65
+attacking_speed = 1.25
 speed = 4
 bullet = ExtResource( 2 )
 

@@ -27,7 +27,6 @@ contact_monitor = true
 can_sleep = false
 script = ExtResource( 1 )
 speed = 250
-freeze_time = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 2, 2 )

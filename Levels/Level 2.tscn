@@ -68,17 +68,18 @@ position = Vector2( 784, -64 )
 [node name="Enemy_Spawner2" parent="Enemyspawners" instance=ExtResource( 14 )]
 position = Vector2( 784, 1600 )
 
-[node name="Enemy_Spawner3" parent="Enemyspawners" instance=ExtResource( 14 )]
-position = Vector2( -64, 784 )
-rotation = 1.5708
-
 [node name="Enemy_Spawner4" parent="Enemyspawners" instance=ExtResource( 14 )]
 position = Vector2( 1600, 784 )
 rotation = -1.5708
 
+[node name="Enemy_Spawner3" parent="Enemyspawners" instance=ExtResource( 14 )]
+position = Vector2( -64, 784 )
+rotation = 1.5708
+
 [node name="Enemys" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
+position = Vector2( 791.782, 430.498 )
 
 [node name="PopUps" type="CanvasLayer" parent="."]
 layer = 100

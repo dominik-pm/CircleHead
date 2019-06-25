@@ -34,7 +34,7 @@ func _ready():
 
 func start_wave():
 	timer.start()
-
+	
 func on_timeout_complete():
 	spawn_sequence()
 	

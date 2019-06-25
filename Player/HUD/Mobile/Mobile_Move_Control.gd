@@ -7,15 +7,14 @@ func _ready():
 
 func _input(event):
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
-		if$TouchControls/left.is_pressed():
+		if $TouchControls/left.is_pressed():
 			InputMap.call("ui_left")
-		if$TouchControls/right.is_pressed():
+		if $TouchControls/right.is_pressed():
 			InputMap.call("ui_right")
-		if$TouchControls/up.is_pressed():
+		if $TouchControls/up.is_pressed():
 			InputMap.call("ui_up")
-		if$TouchControls/down.is_pressed():
+		if $TouchControls/down.is_pressed():
 			InputMap.call("ui_down")
-		
 
 func _on_left_pressed():
 	#InputMap.call("ui_left")

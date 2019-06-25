@@ -8,9 +8,11 @@ var shield = max_shield
 export var shield_reg = 1.25
 export var shield_reg_interval = 1
 
-export var movement_speed = 200
+export var movement_speed = 15
+export var drag = 0.9
 export var turn_speed = 0.03
 
+var accelleration = Vector2(0, 0)
 var velocity = Vector2(0, 0)
 var dir = Vector2(0, -1)
 var this_pos
@@ -80,25 +82,16 @@ func get_input():
 		prev_gun()
 	# <-- WEAPON SWITCH --
 	
-	# -- VELOCITY --
-	velocity = Vector2()
-	velocity.x += float(Input.is_action_pressed('ui_right'))
-	velocity.x -= float(Input.is_action_pressed('ui_left'))
-	velocity.y -= float(Input.is_action_pressed('ui_up'))
-	velocity.y += float(Input.is_action_pressed('ui_down'))
-	
-	# just moving forward and backwards
-	#if Input.is_action_pressed('ui_up'):
-		#velocity = 1
-	#if Input.is_action_pressed('ui_down'):
-		#velocity = -1
+	# -- MOVE -->
+	accelleration.x += float(Input.is_action_pressed('ui_right'))
+	accelleration.x -= float(Input.is_action_pressed('ui_left'))
+	accelleration.y -= float(Input.is_action_pressed('ui_up'))
+	accelleration.y += float(Input.is_action_pressed('ui_down'))
+	# <-- MOVE --
 	
 	# -- SHOOT -->
 	current_gun.check_input(dir)
-	
-# mobile input
-func on_mobile_move(dir):
-	velocity = dir
+
 	
 func get_direction():
 	# -- DIRECTION -->
@@ -109,38 +102,16 @@ func get_direction():
 	dir = mouse_pos-this_pos  # calculate a vector that is pointing from the player to the mouse
 	dir = dir.normalized() # make a unit vector
 	
-	# -- DIRECTION --
-	# rotate with keyboard
-	#if Input.is_action_pressed('ui_right'):
-		#dir = dir.rotated(turn_speed)
-	#if Input.is_action_pressed('ui_left'):
-		#dir = dir.rotated(-turn_speed)
-	
 func _physics_process(delta):
-	get_direction()
 	if not frozen:
 		get_input()
 
-	if velocity.length() != 0:
-		velocity = velocity.normalized()
+	accelleration *= drag
+	velocity = accelleration
 	move_and_slide(velocity*movement_speed)
 	
+	get_direction()
 	look_at(this_pos+dir.rotated(0)) # to rotate the player into the direction, .rotated(PI/2) to look with the players head
-	
-	# disabled for mobile (temporary)
-	velocity = Vector2(0, 0)	
-	
-	## all in bullet now, delete if you are feeling like that :)
-	#var collision = move_and_collide(delta*velocity*movement_speed)
-	#if collision != null:
-		#var body = collision.collider
-		#if body.is_in_group('bullet'):
-			#print('enemy: bullet hit me!')
-			#get_hit(body.damage)
-	##
-	
-	#move_and_slide(velocity*dir*movement_speed) # into the direction
-	#self.position += velocity*dir*delta*movement_speed
 
 # function to get hit by enemy
 func get_hit(dmg):
@@ -161,7 +132,13 @@ func get_hit(dmg):
 	
 	if health <= 0:
 		level.game_over()
-
+# to freeze the player for a certain amount of time
+func freeze(freeze_time):
+	frozen = true
+	timer_unfreeze.wait_time = freeze_time
+	timer_unfreeze.start()
+func _on_unfreezetimer_timeout():
+	frozen = false
 # to heal by heal item for example
 func heal(amt):
 	if health <= max_health-amt:
@@ -174,13 +151,13 @@ func heal(amt):
 			shield = max_shield
 		else:
 			shield += a
-	
 
 # function called by items
 func on_item_got_item():
 	var i = $Guns.get_child_count()
 	pickup_newgun(i)
 
+# -- INVENTORY - GUNS -->
 func pickup_newgun(i):
 	if i < all_guns.size():
 		$Guns.add_child(all_guns[i].instance())
@@ -188,7 +165,6 @@ func pickup_newgun(i):
 		change_gun(i)
 	else:
 		heal(50)
-
 func next_gun():
 	var all_guns = get_node("Guns").get_children()
 	# calculate index of the next gun
@@ -197,7 +173,6 @@ func next_gun():
 	if new_index >= all_guns.size():
 		new_index = 0
 	change_gun(new_index)
-
 func prev_gun():
 	var all_guns = get_node("Guns").get_children()
 	# calculate index of the previous gun
@@ -206,7 +181,6 @@ func prev_gun():
 	if new_index < 0:
 		new_index = all_guns.size()-1
 	change_gun(new_index)
-
 func change_gun(i):
 	# get all guns from inventory
 	var guns_inventory = get_node("Guns").get_children()
@@ -224,16 +198,4 @@ func change_gun(i):
 	
 	# display gun change in inventory
 	inventory.select_slot(current_gun_index)
-
-# to freeze the player for a certain amount of time
-func freeze(freeze_time):
-	frozen = true
-	
-	#velocity.y = 0
-	#velocity.x = 0
-	
-	timer_unfreeze.start()
-
-func _on_unfreezetimer_timeout():
-	frozen = false
-	
+# <-- INVENTORY - GUNS --

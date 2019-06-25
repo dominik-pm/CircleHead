@@ -69,7 +69,8 @@ func on_wave_spawn_enemy(e):
 func on_wave_complete(wave):
 	if get_node("Enemys").get_child_count() == 0:
 		next_wave()
-		wave.queue_free() # maybe better alternative
+		wave.queue_free()
+		spawn_item_random()
 		print(str(self.name)+": wave completed")
 # <-- FUNCTIONS CALLED BY THE CURRENT WAVE--
 
@@ -92,6 +93,21 @@ func on_timeout_nextwave_complete():
 		waves[i_current_wave].start_wave()
 
 func spawn_item(x, y):
+	# instance() the item
+	var i = item.instance()
+	i.init(x, y)
+
+	# add item as child
+	get_node("Items").add_child(i)
+	
+func spawn_item_random():
+	# get a random position
+	var offset = 200
+	randomize()
+	var x = rand_range(-offset, offset)
+	var y = rand_range(-offset, offset)
+	
+	
 	# instance() the item
 	var i = item.instance()
 	i.init(x, y)

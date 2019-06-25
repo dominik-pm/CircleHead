@@ -13,7 +13,7 @@ func on_timeout_complete():
 
 # override die function to spawn item when dead
 func die():
-	get_parent().get_parent().spawn_item(self.position.x, self.position.y)
+	#get_parent().get_parent().spawn_item(self.position.x, self.position.y)
 	queue_free()
 
 # add this function

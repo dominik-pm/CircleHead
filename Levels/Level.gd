@@ -38,6 +38,10 @@ func _ready():
 	for spawner in get_node("Enemyspawners").get_children():
 		all_enemyspawner.push_back(spawner)
 	
+	# set the cameras maximum position (bottom right corner)
+	var max_pos = $CameraBottomRight.position
+	$Player.set_camera_max_pos(max_pos)
+	
 	# get the item
 	item = preload("res://Environment/Item.tscn")
 
@@ -59,7 +63,7 @@ func _ready():
 	timer_next_wave.start()
 
 # -- FUNCTIONS CALLED BY THE CURRENT WAVE -->
-func on_wave_spawn_enemy(e):
+func on_wave_spawn_enemy(e : PackedScene):
 	# spawn it at a random spawner
 	randomize()
 	var r = floor(rand_range(0, all_enemyspawner.size()))
@@ -101,8 +105,9 @@ func spawn_item(x, y):
 	get_node("Items").add_child(i)
 	
 func spawn_item_random():
+	# position 0, 0 is where the player starts
 	# get a random position
-	var offset = 200
+	var offset = 100
 	randomize()
 	var x = rand_range(-offset, offset)
 	var y = rand_range(-offset, offset)

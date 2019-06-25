@@ -23,7 +23,7 @@ func shoot_on_timeout_complete():
 	can_shoot = true
 
 func check_input(dir):
-	if Input.is_action_pressed("player_shoot"):
+	if Input.is_action_just_pressed("player_shoot"):
 		check_shoot(dir)
 
 # function to shoot a bullet in the facing direction

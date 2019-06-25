@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://PopUp/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://PopUp/Settings.gd" type="Script" id=1]
 
 [node name="Settings" type="Control"]
 pause_mode = 2
@@ -14,28 +14,66 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.376471 )
 
 [node name="Restart" type="Button" parent="."]
-margin_left = 485.833
-margin_top = 54.0896
-margin_right = 574.833
-margin_bottom = 74.0896
-rect_scale = Vector2( 6.71001, 6.71001 )
+margin_left = 560.0
+margin_top = 400.0
+margin_right = 649.0
+margin_bottom = 420.0
+rect_scale = Vector2( 5.05926, 5.05926 )
 text = "restart level"
 
 [node name="Menu" type="Button" parent="."]
-margin_left = 640.997
-margin_top = 246.872
-margin_right = 689.997
-margin_bottom = 266.872
+margin_left = 640.0
+margin_top = 256.0
+margin_right = 689.0
+margin_bottom = 276.0
 rect_scale = Vector2( 5.65297, 5.65297 )
 text = "menu"
 
 [node name="Resume" type="Button" parent="."]
-margin_left = 572.58
-margin_top = 429.531
-margin_right = 633.58
-margin_bottom = 449.531
-rect_scale = Vector2( 6.94677, 6.94677 )
+margin_left = 560.0
+margin_top = 64.0
+margin_right = 621.0
+margin_bottom = 84.0
+rect_scale = Vector2( 7.03067, 7.03067 )
 text = "resume"
+
+[node name="SoundFX_Toggle" type="CheckButton" parent="."]
+margin_left = 512.0
+margin_top = 512.0
+margin_right = 677.0
+margin_bottom = 552.0
+rect_scale = Vector2( 3.24991, 3.24991 )
+pressed = true
+text = "Sound Effects"
+
+[node name="SoundFX_Volume" type="HSlider" parent="."]
+margin_left = 616.256
+margin_top = 618.106
+margin_right = 744.256
+margin_bottom = 634.106
+rect_scale = Vector2( 3.07807, 3.07807 )
+ticks_on_borders = false
+
+[node name="Music_Toggle" type="CheckButton" parent="."]
+margin_left = 656.0
+margin_top = 656.0
+margin_right = 775.0
+margin_bottom = 696.0
+rect_scale = Vector2( 3.38718, 3.38718 )
+pressed = true
+text = "Music"
+
+[node name="Music_Volume" type="HSlider" parent="."]
+margin_left = 624.0
+margin_top = 768.0
+margin_right = 752.0
+margin_bottom = 784.0
+rect_scale = Vector2( 3.07807, 3.07807 )
+ticks_on_borders = false
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
 [connection signal="pressed" from="Resume" to="." method="_on_Resume_pressed"]
+[connection signal="toggled" from="SoundFX_Toggle" to="." method="_on_SoundFX_toggled"]
+[connection signal="value_changed" from="SoundFX_Volume" to="." method="_on_SoundFX_Volume_value_changed"]
+[connection signal="toggled" from="Music_Toggle" to="." method="_on_Music_toggled"]
+[connection signal="value_changed" from="Music_Volume" to="." method="_on_Music_Volume_value_changed"]

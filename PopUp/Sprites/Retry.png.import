@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Resume.png-6eb14a404d32358132531ee356a772f8.stex"
+path="res://.import/Retry.png-9489e818acbc584018310ea966cdadc1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Menu/img/Resume.png"
-dest_files=[ "res://.import/Resume.png-6eb14a404d32358132531ee356a772f8.stex" ]
+source_file="res://PopUp/Sprites/Retry.png"
+dest_files=[ "res://.import/Retry.png-9489e818acbc584018310ea966cdadc1.stex" ]
 
 [params]
 

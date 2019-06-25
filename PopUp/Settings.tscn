@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://PopUp/Settings.gd" type="Script" id=1]
-[ext_resource path="res://Menu/img/Retry.png" type="Texture" id=2]
-[ext_resource path="res://Menu/img/Home.png" type="Texture" id=3]
-[ext_resource path="res://Menu/img/Resume.png" type="Texture" id=4]
+[ext_resource path="res://PopUp/Sprites/Resume.png" type="Texture" id=2]
+[ext_resource path="res://PopUp/Sprites/Home.png" type="Texture" id=3]
+[ext_resource path="res://PopUp/Sprites/Retry.png" type="Texture" id=4]
 
 [node name="Settings" type="Control"]
 pause_mode = 2
@@ -14,37 +14,33 @@ script = ExtResource( 1 )
 [node name="Black Overlay" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.29236
-margin_top = -1.29236
-margin_right = -1.29236
-margin_bottom = -1.29236
 color = Color( 0, 0, 0, 0.376471 )
 
-[node name="Restart" type="Button" parent="."]
-margin_left = 1035.0
-margin_top = 175.0
-margin_right = 2533.62
-margin_bottom = 1639.0
-rect_scale = Vector2( 0.2, 0.2 )
+[node name="Resume" type="Button" parent="."]
+margin_left = 192.0
+margin_top = 192.0
+margin_right = 1228.0
+margin_bottom = 1222.0
+rect_scale = Vector2( 0.25, 0.25 )
 icon = ExtResource( 2 )
 flat = true
 
 [node name="Menu" type="Button" parent="."]
-margin_left = 634.894
-margin_top = 210.0
-margin_right = 2156.75
-margin_bottom = 1674.0
-rect_scale = Vector2( 0.2, 0.2 )
-text = "menu"
+margin_left = 640.0
+margin_top = 224.0
+margin_right = 1676.0
+margin_bottom = 1254.0
+rect_scale = Vector2( 0.25, 0.25 )
 icon = ExtResource( 3 )
 flat = true
 
-[node name="Resume" type="Button" parent="."]
-margin_left = 235.0
-margin_top = 175.0
-margin_right = 1705.0
-margin_bottom = 1639.0
-rect_scale = Vector2( 0.2, 0.2 )
+[node name="Restart" type="Button" parent="."]
+margin_left = 1088.0
+margin_top = 192.0
+margin_right = 2124.0
+margin_bottom = 1222.0
+rect_scale = Vector2( 0.25, 0.25 )
+shortcut_in_tooltip = false
 icon = ExtResource( 4 )
 flat = true
 
@@ -79,9 +75,9 @@ margin_top = 753.784
 margin_right = 373.339
 margin_bottom = 769.784
 rect_scale = Vector2( 3.07807, 3.07807 )
-[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
 [connection signal="pressed" from="Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
 [connection signal="toggled" from="SoundFX_Toggle" to="." method="_on_SoundFX_toggled"]
 [connection signal="value_changed" from="SoundFX_Volume" to="." method="_on_SoundFX_Volume_value_changed"]
 [connection signal="toggled" from="Music_Toggle" to="." method="_on_Music_toggled"]

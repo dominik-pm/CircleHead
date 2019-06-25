@@ -26,7 +26,6 @@ guns = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
 gun_sprites = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
-position = Vector2( -16, 400 )
 
 [node name="CameraBottomRight" type="Position2D" parent="."]
 position = Vector2( 1536, 1536 )

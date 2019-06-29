@@ -1,9 +1,10 @@
 extends Node
 
-var current_level = 1
+var current_level = 2
 
 func _ready():
-	change_scene("Menu/Menu.tscn")
+	# display the title screen on startup
+	change_scene("Menu/TitleScreen.tscn")
 
 func _input(event):
 	if event.is_action_pressed("toggle_fullscreen"):

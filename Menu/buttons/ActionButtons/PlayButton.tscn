@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Menu/buttons/ActionButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menu/buttons/ActionButtons/play_button.gd" type="Script" id=2]
+
+[node name="PlayButton" instance=ExtResource( 1 )]
+margin_right = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 425, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+
+[node name="Label" parent="." index="0"]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 420.0
+margin_bottom = 82.0
+size_flags_horizontal = 4
+text = "Play Level 0"
+align = 1
+[connection signal="pressed" from="." to="." method="_on_PlayButton_pressed"]

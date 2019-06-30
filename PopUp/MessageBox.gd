@@ -1,9 +1,9 @@
-extends Control
+extends Popup
 
 func show_msg(msg):
-	get_node("Panel/Label").text = msg
-	show()
-	$Timer.start()
+	$VBoxContainer/CenterContainer/Panel/CenterContainer/Label.text = msg
+	popup()
+	$AnimationPlayer.play("popup")
 
-func _on_Timer_timeout():
+func _on_AnimationPlayer_animation_finished(anim_name):
 	hide()

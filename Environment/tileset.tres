@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/ps/darktiles-autotiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/ps/tileset-dark-complet.png" type="Texture" id=2]
 
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, -32, 0, 64, -32, 64, -32, -32 )
 

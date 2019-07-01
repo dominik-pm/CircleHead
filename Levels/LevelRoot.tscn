@@ -59,7 +59,6 @@ position = Vector2( 769.376, 354.972 )
 layer = 100
 
 [node name="MessageBox" parent="PopUps" instance=ExtResource( 12 )]
-visible = false
 show_behind_parent = true
 
 [node name="Settings" parent="PopUps" instance=ExtResource( 13 )]

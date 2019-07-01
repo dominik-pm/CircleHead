@@ -13,14 +13,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 3.7, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.7, 3.7, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="MessageBox" type="Popup"]
-visible = true
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,9 +52,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="VBoxContainer/CenterContainer/Panel/CenterContainer"]
-margin_top = 20.0
+margin_top = 40.0
 margin_right = 500.0
-margin_bottom = 79.0
+margin_bottom = 59.0
 rect_min_size = Vector2( 500, 0 )
 custom_fonts/font = ExtResource( 2 )
 text = "Message set by code,  that is what happens when there is more text"

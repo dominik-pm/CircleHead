@@ -7,6 +7,9 @@
 [node name="Level 3" instance=ExtResource( 1 )]
 next_wave_wait_time = 3
 
+[node name="CameraBottomRight" parent="." index="1"]
+position = Vector2( 1856, 2176.01 )
+
 [node name="Wave 1" parent="Waves" index="0"]
 enemy_counts = [ 10, 3, 1 ]
 
@@ -39,6 +42,3 @@ rotation = -1.57079
 [node name="Enemy_Spawner4" parent="Enemyspawners" index="3" instance=ExtResource( 3 )]
 position = Vector2( 1920, 1088 )
 rotation = 1.57079
-
-[node name="PopUps" parent="." index="7"]
-editor/display_folded = true

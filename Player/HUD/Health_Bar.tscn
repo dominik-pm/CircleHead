@@ -41,10 +41,9 @@ value = 100.0
 percent_visible = false
 
 [node name="Label" type="Label" parent="HealthBar"]
-margin_left = 0.323536
-margin_top = -15.5987
-margin_right = 89.3235
-margin_bottom = -1.59868
+margin_top = -16.0
+margin_right = 102.0
+margin_bottom = 3.0
 text = "Player Health:"
 
 [node name="ShieldBar" type="ProgressBar" parent="."]

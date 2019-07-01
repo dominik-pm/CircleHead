@@ -32,7 +32,6 @@ smoothing_enabled = true
 editor_draw_drag_margin = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="Settings" type="Node2D" parent="HUD"]
 z_index = 10

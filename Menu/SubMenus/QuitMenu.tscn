@@ -7,13 +7,12 @@
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
 margin_left = 332.0
-margin_top = 313.0
+margin_top = 320.0
 margin_right = 1204.0
-margin_bottom = 551.0
+margin_bottom = 544.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 872.0
-margin_bottom = 82.0
 text = "Do you really want to quit?"
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer" index="1"]
@@ -29,5 +28,5 @@ focus_next = NodePath("../../BackButton")
 [node name="BackButton" parent="CenterContainer/VBoxContainer" index="2"]
 margin_top = 190.0
 margin_right = 872.0
-margin_bottom = 238.0
+margin_bottom = 224.0
 focus_previous = NodePath("../CenterContainer/QuitButton")

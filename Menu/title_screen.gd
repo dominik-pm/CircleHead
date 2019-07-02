@@ -3,6 +3,9 @@ extends Control
 var scene_to_load
 
 func _ready():
+	$Fade.show()
+	$Fade.fade_in()
+	
 	# set the focus of ui to the first button
 	$Menu/CenterRow/Buttons/PlayButton.grab_focus()
 	
@@ -14,5 +17,8 @@ func _on_Button_pressed(stl):
 	$Fade.show()
 	$Fade.fade_out()
 
-func _on_Fade_fade_finished():
-	get_node("/root/global").change_scene(scene_to_load)
+func _on_Fade_fade_finished(anim):
+	if anim == 'fade_out':
+		get_node("/root/global").change_scene(scene_to_load)
+	else:
+		$Fade.hide()

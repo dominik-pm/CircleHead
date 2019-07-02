@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Menu/SubMenus/return_to_title.gd" type="Script" id=1]
+[ext_resource path="res://Menu/SubMenus/submenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/berlinsansfb_72.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/berlinsansfb_36.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Menu/fade/Fade.tscn" type="PackedScene" id=4]
 
 [node name="SubMenu" type="Control"]
 anchor_right = 1.0
@@ -20,9 +21,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 517.0
-margin_top = 365.0
+margin_top = 372.0
 margin_right = 1018.0
-margin_bottom = 499.0
+margin_bottom = 492.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 501.0
@@ -36,9 +37,12 @@ align = 1
 [node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 86.0
 margin_right = 501.0
-margin_bottom = 134.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
 text = "Back"
-[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_Button_pressed"]
+
+[node name="Fade" parent="." instance=ExtResource( 4 )]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="fade_finished" from="Fade" to="." method="_on_Fade_fade_finished"]

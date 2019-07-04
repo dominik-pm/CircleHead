@@ -59,6 +59,7 @@ margin_top = 744.757
 margin_right = 1027.28
 margin_bottom = 760.757
 rect_scale = Vector2( 3.07807, 3.07807 )
+ticks_on_borders = true
 
 [node name="Music_Toggle" type="CheckButton" parent="."]
 margin_left = 277.339

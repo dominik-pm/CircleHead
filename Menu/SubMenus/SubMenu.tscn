@@ -44,5 +44,6 @@ custom_fonts/font = ExtResource( 3 )
 text = "Back"
 
 [node name="Fade" parent="." instance=ExtResource( 4 )]
+visible = false
 [connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="fade_finished" from="Fade" to="." method="_on_Fade_fade_finished"]

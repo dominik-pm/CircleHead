@@ -2,6 +2,15 @@ extends Node
 
 var current_level = 1
 
+var settings = {
+	"sfx":true,
+	"sfx_volume":50,
+	"music":true,
+	"music_volume":50,
+	"fullscreen":false,
+	"resolution":Vector2(1920, 1080)
+}
+
 func _ready():
 	# display the title screen on startup
 	change_scene("Menu/TitleScreen.tscn")
@@ -16,12 +25,13 @@ func level_set_next():
 # <-- LEVEL CALLED FUNCTIONS <--
 
 # --> CONTROL CALLED FUNCTIONS: -->
-#func play_next_level():
-	# set current level to next level
-	#current_level+=1
-	# load the level
-	#play_current_level()
-	#pass
+func change_setting(setting, value):
+	if settings[setting] != null:
+		settings[setting] = value
+		update_settings()
+	else:
+		print(setting + ' is not a valid setting!')
+# <-- CONTROL CALLED FUNCTIONS: <--
 	
 func play_current_level():
 	# load current level
@@ -35,6 +45,13 @@ func play_current_level():
 # <-- CONTROL CALLED FUNCTIONS <--
 	
 # --> HELP FUNCTIONS -->
+func update_settings():
+	get_node("/root/SFX").set_soundfx_volume(settings["sfx_volume"])
+	get_node("/root/SFX").set_music_volume(settings["music_volume"])
+	
+	OS.window_fullscreen = settings["fullscreen"]
+
+
 # function to set a scene with a path
 func change_scene(scene_path):
 	get_tree().paused = false
